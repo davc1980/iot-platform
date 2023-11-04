@@ -26,7 +26,7 @@ const items = [
   getItem((<Link to={'/settings'} >Settings</Link>), '4', <SettingOutlined />),
   getItem((<Link to={'/logout'} >Log Out</Link>), '5', <LogoutOutlined />),
 ];
-const HomeLayout = () => {
+const DevicesLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -44,7 +44,7 @@ const HomeLayout = () => {
           </div>
      
         <br />
-        <Menu theme="light" defaultSelectedKeys={['1']} mode="inline" items={items} />
+        <Menu theme="light" defaultSelectedKeys={['4']} mode="inline" items={items} />
         
       </Sider>
       <Layout>
@@ -73,7 +73,7 @@ const HomeLayout = () => {
             }}
 
             items={[{
-              title: 'Home',
+              title: 'Settings',
             }]}
           >
             
@@ -85,7 +85,7 @@ const HomeLayout = () => {
               background: colorBgContainer,
             }}
           >
-            <h1>This is the homepage</h1>
+            <h1>This is the Settings Page</h1>
           </div>
         </Content>
         <Footer
@@ -100,4 +100,4 @@ const HomeLayout = () => {
     </Layout>
   );
 };
-export default HomeLayout;
+export default DevicesLayout;

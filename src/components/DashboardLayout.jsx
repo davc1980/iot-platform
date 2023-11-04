@@ -44,7 +44,7 @@ const HomeLayout = () => {
           </div>
      
         <br />
-        <Menu theme="light" defaultSelectedKeys={['1']} mode="inline" items={items} />
+        <Menu theme="light" defaultSelectedKeys={['3']} mode="inline" items={items} />
         
       </Sider>
       <Layout>
@@ -73,7 +73,7 @@ const HomeLayout = () => {
             }}
 
             items={[{
-              title: 'Home',
+              title: 'Dashboard',
             }]}
           >
             
@@ -85,7 +85,7 @@ const HomeLayout = () => {
               background: colorBgContainer,
             }}
           >
-            <h1>This is the homepage</h1>
+            <h1>This is the Dashboard Page</h1>
           </div>
         </Content>
         <Footer
