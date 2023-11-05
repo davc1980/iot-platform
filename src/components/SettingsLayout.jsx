@@ -5,12 +5,14 @@ import {
   SettingOutlined,
   CopyrightOutlined,
   ApartmentOutlined,
-  UserOutlined,
   HomeOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme, Avatar, Image, Space } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Avatar, Image } from 'antd';
+
+
 const { Header, Content, Footer, Sider } = Layout;
+
 function getItem(label, key, icon, children) {
   return {
     key,

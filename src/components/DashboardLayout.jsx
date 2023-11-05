@@ -5,11 +5,16 @@ import {
   SettingOutlined,
   CopyrightOutlined,
   ApartmentOutlined,
-  UserOutlined,
   HomeOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme, Avatar, Image, Space } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Avatar,  Button, Card, Divider } from 'antd';
+
+
+
+
+
+
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -28,35 +33,43 @@ const items = [
 ];
 const HomeLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
+
+  
+
   const {
-    token: { colorBgContainer },
+    token: colorBgContainer ,
   } = theme.useToken();
   return (
     <Layout
       style={{
-        minHeight: '100vh',
+            //   minHeight: '100vh',
+          
       }}
-    >
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} theme='light'>
+      >
+          
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} theme='dark'>
         
         <div className="demo-logo-vertical" > 
-          <Image style={{ textAlign: 'center', padding: '15px' }} src='https://iot-solutions.com.mx/img/Logo_iot_iotsolutions.JPG' preview={false} />
+          
           </div>
      
         <br />
-        <Menu theme="light" defaultSelectedKeys={['3']} mode="inline" items={items} />
+        <Menu theme="dark" defaultSelectedKeys={['3']} mode="inline" items={items} />
         
       </Sider>
       <Layout>
         <Header
           style={{
-            padding: 0,
+            
             background: colorBgContainer,
             textAlign: "end",
             fontStyle: 'italic',
-            fontWeight:'bold'
+                      fontWeight: 'bold',
+            color:'white'
+             
           }}
-        >  <Avatar
+              >
+                  <Avatar
       style={{
         backgroundColor: '#87d068',
       }} size={40}
@@ -64,34 +77,54 @@ const HomeLayout = () => {
           />{' '}Welcome Damian!</Header>
         <Content
           style={{
-            margin: '0 16px',
+                      //   margin: '0 16px',
+              padding:10,
+                 
           }}
         >
           <Breadcrumb
             style={{
-              margin: '16px 0',
+                          margin: '16px 0',
+                
+                          
             }}
 
             items={[{
-              title: 'Dashboard',
+              title:'',
             }]}
           >
-            
-          </Breadcrumb>
+           
+                  </Breadcrumb>
+                   <Divider orientation='left'>Dashboard</Divider>
           <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
+                      style={{
+                margin:10,
+              padding: 1,
+              minHeight: 720,
+            //   background: colorBgContainer,
             }}
-          >
-            <h1>This is the Dashboard Page</h1>
+          ><Card
+                          title="Encendido Bomba 1"
+                          hoverable
+    bordered={true}
+    style={{
+        width: 300,
+        margin: 10,
+       
+        textAlign:'center'
+    }}
+  >
+    <Button>on /off</Button>
+  </Card>
+                      
           </div>
         </Content>
         <Footer
           style={{
-            textAlign: 'center',
-            // height: '5px',
+                      textAlign: 'center',
+                      background: 'darkblue',
+              color:'white'
+            
           }}
         >
           IoT Solutions <CopyrightOutlined /> { new Date().getFullYear()}
