@@ -9,6 +9,9 @@ import {
   LogoutOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme, Avatar, Image } from 'antd';
+import Control from './Control';
+
+
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -85,6 +88,7 @@ const DevicesLayout = () => {
             }}
           >
             <h1>This is the Dashboard Page</h1>
+            <Control title='Light Control' topic='luces'/>
           </div>
         </Content>
         <Footer
