@@ -3,7 +3,16 @@ import { Card, Button } from 'antd'
 import { useState } from 'react'
 import mqtt from 'mqtt/dist/mqtt'
 
-const client = mqtt.connect("ws://iotsolutions.us.to:8083/mqtt");
+var options = {
+    protocol: 'wss',
+    username: 'reactmqtt',
+    password: 'Paulita1201#',
+    // clientId uniquely identifies client
+    // choose any string you wish
+    clientId: 'iotplatform_' + Math.random().toString(16).substring(2, 8),
+};
+
+const client = mqtt.connect("wss://fedec34485684601887651d968c723e6.s1.eu.hivemq.cloud:8884/mqtt",options);
 
 function Control({ topic, title, estilo}) {
     const [envio, setEnvio] = useState("off")
