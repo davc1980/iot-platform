@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme, Avatar, Image } from 'antd';
 import Control from './Control';
+import Indicator from './Indicator';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -46,7 +47,7 @@ const DevicesLayout = () => {
           </div>
      
         <br />
-        <Menu theme="light" defaultSelectedKeys={['2']} mode="inline" items={items} />
+        <Menu theme="light" defaultSelectedKeys={['3']} mode="inline" items={items} />
         
       </Sider>
       <Layout>
@@ -75,7 +76,7 @@ const DevicesLayout = () => {
             }}
 
             items={[{
-              title: 'Devices',
+              title: 'Dashboard',
             }]}
           >
             
@@ -88,7 +89,8 @@ const DevicesLayout = () => {
             }}
           >
             <h1>This is the Dashboard Page</h1>
-            <Control title='Light Control' topic='luces'/>
+            <Control title='Light Control' topic='luces' />
+            <Indicator title='Horno' topic='horno'/>
           </div>
         </Content>
         <Footer
