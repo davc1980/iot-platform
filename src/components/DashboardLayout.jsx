@@ -8,13 +8,7 @@ import {
   HomeOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme, Avatar,  Button, Card, Divider } from 'antd';
-
-
-
-
-
-
+import { Breadcrumb, Layout, Menu, theme, Avatar, Image } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -31,80 +25,37 @@ const items = [
   getItem((<Link to={'/settings'} >Settings</Link>), '4', <SettingOutlined />),
   getItem((<Link to={'/logout'} >Log Out</Link>), '5', <LogoutOutlined />),
 ];
-
-
-var mqtt = require("mqtt");
-var options = {
-  port: 8884,
-  protocol: "mqtts",
-  username: "iotsolutions",
-  password: "Paulita1201",
-  // clientId uniquely identifies client
-  // choose any string you wish
-  clientId: "b0908853",
-};
-var client = mqtt.connect(
-  "fedec34485684601887651d968c723e6.s1.eu.hivemq.cloud",
-  options
-);
-
-// preciouschicken.com is the MQTT topic
-client.subscribe("test");
-
-const HomeLayout = () => {
+const DevicesLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
-
-  var note;
-  client.on("message", function (topic, message) {
-    note = message.toString();
-    // Updates React state with message
-    setMesg(note);
-    console.log(note);
-    client.end();
-  });
-
-  // Sets default React state
-  const [mesg, setMesg] = useState(
-    <Fragment>
-      <em>nothing heard</em>
-    </Fragment>
-  );
-
-
   const {
-    token: colorBgContainer ,
+    token: { colorBgContainer },
   } = theme.useToken();
   return (
     <Layout
       style={{
-            //   minHeight: '100vh',
-          
+        minHeight: '100vh',
       }}
-      >
-          
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} theme='dark'>
+    >
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} theme='light'>
         
         <div className="demo-logo-vertical" > 
-          
+          <Image style={{ textAlign: 'center', padding: '15px' }} src='https://iot-solutions.com.mx/img/Logo_iot_iotsolutions.JPG' preview={false} />
           </div>
      
         <br />
-        <Menu theme="dark" defaultSelectedKeys={['3']} mode="inline" items={items} />
+        <Menu theme="light" defaultSelectedKeys={['2']} mode="inline" items={items} />
         
       </Sider>
       <Layout>
         <Header
           style={{
-            
+            padding: 0,
             background: colorBgContainer,
             textAlign: "end",
             fontStyle: 'italic',
-                      fontWeight: 'bold',
-            color:'white'
-             
+            fontWeight:'bold'
           }}
-              >
-                  <Avatar
+        >  <Avatar
       style={{
         backgroundColor: '#87d068',
       }} size={40}
@@ -112,54 +63,34 @@ const HomeLayout = () => {
           />{' '}Welcome Damian!</Header>
         <Content
           style={{
-                      //   margin: '0 16px',
-              padding:10,
-                 
+            margin: '0 16px',
           }}
         >
           <Breadcrumb
             style={{
-                          margin: '16px 0',
-                
-                          
+              margin: '16px 0',
             }}
 
             items={[{
-              title:'',
+              title: 'Devices',
             }]}
           >
-           
-                  </Breadcrumb>
-                   <Divider orientation='left'>Dashboard</Divider>
+            
+          </Breadcrumb>
           <div
-                      style={{
-                margin:10,
-              padding: 1,
-              minHeight: 720,
-            //   background: colorBgContainer,
+            style={{
+              padding: 24,
+              minHeight: 360,
+              background: colorBgContainer,
             }}
-          ><Card
-                          title="Encendido Bomba 1"
-                          hoverable
-    bordered={true}
-    style={{
-        width: 300,
-        margin: 10,
-       
-        textAlign:'center'
-    }}
-  >
-    <Button>on /off</Button>
-  </Card>
-                      
+          >
+            <h1>This is the Dashboard Page</h1>
           </div>
         </Content>
         <Footer
           style={{
-                      textAlign: 'center',
-                      background: 'darkblue',
-              color:'white'
-            
+            textAlign: 'center',
+            // height: '5px',
           }}
         >
           IoT Solutions <CopyrightOutlined /> { new Date().getFullYear()}
@@ -168,4 +99,4 @@ const HomeLayout = () => {
     </Layout>
   );
 };
-export default HomeLayout;
+export default DevicesLayout;
