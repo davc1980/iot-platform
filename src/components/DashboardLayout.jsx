@@ -31,10 +31,45 @@ const items = [
   getItem((<Link to={'/settings'} >Settings</Link>), '4', <SettingOutlined />),
   getItem((<Link to={'/logout'} >Log Out</Link>), '5', <LogoutOutlined />),
 ];
+
+
+var mqtt = require("mqtt");
+var options = {
+  port: 8884,
+  protocol: "mqtts",
+  username: "iotsolutions",
+  password: "Paulita1201",
+  // clientId uniquely identifies client
+  // choose any string you wish
+  clientId: "b0908853",
+};
+var client = mqtt.connect(
+  "fedec34485684601887651d968c723e6.s1.eu.hivemq.cloud",
+  options
+);
+
+// preciouschicken.com is the MQTT topic
+client.subscribe("test");
+
 const HomeLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
 
-  
+  var note;
+  client.on("message", function (topic, message) {
+    note = message.toString();
+    // Updates React state with message
+    setMesg(note);
+    console.log(note);
+    client.end();
+  });
+
+  // Sets default React state
+  const [mesg, setMesg] = useState(
+    <Fragment>
+      <em>nothing heard</em>
+    </Fragment>
+  );
+
 
   const {
     token: colorBgContainer ,
